@@ -6,7 +6,7 @@
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:54:23 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/03 14:18:37 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/03 14:40:03 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,9 @@ private: /*variables should not be acceesed*/
 	std::string nick_n;
 	int phone_nbr;	
 public: /*define method(function) inside Contact class*/
-	void addContact();
-	void searchC(); /*functions will be declared outside class*/
+	Contact(); /*constructor, will be called auto when obj created*/
+	void setContact();
+	void getContact() const; /*the output is read_only*/
 };
 
 #endif
