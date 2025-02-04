@@ -6,7 +6,7 @@
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:54:23 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/04 11:30:33 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/04 11:57:38 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ public:
 	void setFirst(const std::string &firstname);
 	void setLast(const std::string &lastname);
 	void setNick(const std::string &nickname);
-	void setnumber(const std::string &num);
+	void setNumber(const std::string &num);
 	void setSecret(const std::string &secrt);
 	
 	/*ret type is const refrence(&) to std::string, not a copy*/
