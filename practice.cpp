@@ -6,7 +6,7 @@
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 11:19:01 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/03 12:03:36 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/04 13:08:31 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,4 +87,25 @@ int main()
         cout << output << endl;
     }
     return 0;
+}
+
+void PhoneBook::searchContact() const {
+    if (totalContacts == 0) {
+        std::cout << "Phonebook is empty!" << std::endl;
+        return;
+    }
+
+    std::cout << "| Index | First Name | Last Name | Nickname |" << std::endl;
+    for (int i = 0; i < totalContacts; i++)
+        contacts[i].displaySummary(i);
+
+    std::cout << "Enter contact index to view details: ";
+    int choice;
+    std::cin >> choice;
+    std::cin.ignore();
+
+    if (choice >= 0 && choice < totalContacts)
+        contacts[choice].displayContact();
+    else
+        std::cout << "Invalid index!" << std::endl;
 }

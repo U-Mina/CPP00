@@ -6,7 +6,7 @@
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:03:20 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/04 13:00:55 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/04 13:48:12 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,29 @@ void PhoneBook::addContact(const Contact &person)
 //print table of 4 columns of contacts
 void PhoneBook::printContacts() const
 {
+	int i;
+	int realIndex;
 	
+	if (total == 0)
+	{
+		std::cout << "PhoneBook is empty." << std::endl;
+		return ;
+	}
+	std::cout << "Index | First Name | Last Name | Nickname" << std::endl;
+	for (i = 0; i < total; ++i)//++i becasue indext starts at 0, totalnumber starts at 1
+	{
+		if (total < 8)
+			realIndex = i;
+		else
+			realIndex = (curIndex + i) % 8;
+		const Contact &per = contacts[realIndex];
+		std::string firstName = per.getFirst().substr(0, 10);
+		if (per.getFirst().length() > 10)
+		{
+			firstName[9] = '.';//if>10, the last one will be '.'
+			firstName = firstName.substr(0, 10);
+		}
+	}
 }
 
 Contact PhoneBook::searchContact(int displayIndex) const
