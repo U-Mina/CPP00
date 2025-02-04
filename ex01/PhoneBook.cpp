@@ -6,7 +6,7 @@
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:03:20 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/04 13:48:12 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/04 14:46:53 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,26 +47,49 @@ void PhoneBook::printContacts() const
 		std::cout << "PhoneBook is empty." << std::endl;
 		return ;
 	}
-	std::cout << "Index | First Name | Last Name | Nickname" << std::endl;
-	for (i = 0; i < total; ++i)//++i becasue indext starts at 0, totalnumber starts at 1
+	//every column is 10 chars wide
+	std::cout << "     Index|First Name| Last Name|  Nickname" << std::endl;
+	for (i = 0; i < total; ++i)//++i more general used in cpp
 	{
 		if (total < 8)
 			realIndex = i;
 		else
 			realIndex = (curIndex + i) % 8;
 		const Contact &per = contacts[realIndex];
+		//this std::string firstName is a local copy
 		std::string firstName = per.getFirst().substr(0, 10);
+		//if firstName is not private, can use per.firstName.length() directly
 		if (per.getFirst().length() > 10)
 		{
 			firstName[9] = '.';//if>10, the last one will be '.'
-			firstName = firstName.substr(0, 10);
+			firstName = firstName.substr(0, 10);//substr(index, len)
 		}
+		std::string lastName = per.getLast().substr(0, 10);
+		if (per.getLast().length() > 10)
+		{
+			lastName[9] = '.';
+			lastName = lastName.substr(0, 10);
+		}
+		std::string nickName = per.getNick().substr(0, 10);
+		if (per.getNick().length() > 10)
+		{
+			nickName[9] = '.';
+			nickName = nickName.substr(0, 10);
+		}
+		std::cout << std::setw(10) << i << "|"
+				<< std::setw(10) << firstName << " | "
+				<< std::setw(10) << lastName << " | "
+				<< std::setw(10) << nickName << std::endl;
 	}
 }
 
+//search specific index of contact
 Contact PhoneBook::searchContact(int displayIndex) const
 {
-	//search specific index of contact
+	if (total < 8)
+		return contacts[displayIndex];
+	else
+		return contacts[(curIndex + displayIndex) % 8];
 }
 
 /**
