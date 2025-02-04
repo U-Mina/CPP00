@@ -6,9 +6,34 @@
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:03:20 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/03 13:46:56 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/04 12:47:36 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "PhoneBook.hpp"
+
+/*define constructor for PhoneBook class*/
+/* init curIndex and total, when this PhoneBook object is created
+	it statrs with: curIndex = 0 → the first available position in the contacts array
+	contactCount = 0 → The phonebook is empty */
+PhoneBook::PhoneBook() : curIndex(0), total(0) {}
+
+void PhoneBook::addContact(const Contact &person)
+{
+	//code implement of addcontact behavior
+	//do later
+}
+
+void PhoneBook::printContacts() const
+{
+	//print table of 4 columns of contacts
+	//do later
+}
+
+Contact PhoneBook::searchContact(int displayIndex) const
+{
+	//search specific index of contact
+}
 
 /**
 CLASS: blueprint for creating object
