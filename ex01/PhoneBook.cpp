@@ -6,7 +6,7 @@
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:03:20 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/04 12:47:36 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/04 13:00:55 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,26 @@ PhoneBook::PhoneBook() : curIndex(0), total(0) {}
 
 void PhoneBook::addContact(const Contact &person)
 {
-	//code implement of addcontact behavior
-	//do later
+	if (total < 8) //new contact can be added
+	{
+		//contacts[8] declared in hpp
+		contacts[curIndex] = person;
+		//update index, bounded 0 - 7
+		//used to overwrite oldest one if exceed 8 contacts
+		curIndex = (curIndex + 1) % 8;
+		total++;
+	}
+	else
+	{
+		contacts[curIndex] = person;
+		curIndex = (curIndex + 1) % 8;
+	}
 }
 
+//print table of 4 columns of contacts
 void PhoneBook::printContacts() const
 {
-	//print table of 4 columns of contacts
-	//do later
+	
 }
 
 Contact PhoneBook::searchContact(int displayIndex) const
