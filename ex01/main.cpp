@@ -13,6 +13,8 @@
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
 
+/*normaly, const & passing the ref to avoid uncessary copy to enhance efficiency,
+for non primitive data type, its good habit*/
 std::string readInput(const std::string &promtp)
 {
 	std::string input;
@@ -31,19 +33,26 @@ std::string readInput(const std::string &promtp)
 int main()
 {
 	PhoneBook phonebook; //phonebook is an instance of PhoneBook class
-	Contact contact;//instance of Contact class
 	std::string cmd;
 	
 	while (1)
 	{
 		std::cout << "Enter your instruction: ADD, SEARCH, EXIT" << std::endl;
 		std::getline(std::cin, cmd);
+		//std::cin >> cmd;
 		if (cmd == "ADD")
 		{
-			
+			Contact singleContact;//create instance of Contact class
+			singleContact.setFirst(readInput("Enter first name: "));
+			singleContact.setLast(readInput("Enter last name: "));
+			singleContact.setNick(readInput("Nickname is: "));
+			singleContact.setNumber(readInput("Phone number is: "));
+			singleContact.setSecret(readInput("Darkest secret is: "));
+			phonebook.addContact(singleContact);			
 		}
 		else if (cmd == "SEARCH")
 		{
+			
 			
 		}
 		else if (cmd == "EXIT")
