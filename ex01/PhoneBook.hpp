@@ -32,6 +32,7 @@ public:
 	void printContacts() const;
 	/* search a specifit contact object with index and display*/
 	Contact searchContact(int displayIndex) const;
+	int gettotal() const;
 };
 
 #endif

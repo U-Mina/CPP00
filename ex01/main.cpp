@@ -54,7 +54,7 @@ int main()
 		{
 			int total;
 			phonebook.printContacts();
-			total = phonebook.getTotalNbr();
+			total = phonebook.gettotal();
 			if (total == 0)
 			{
 				std::cout << "Empty Phonebook!" << std::endl;
@@ -76,12 +76,12 @@ int main()
 			}
 		}
 		else if (cmd == "EXIT")
-			exit(0);
+			//exit(0);
 		else
 			std::cout << "Invalid command!" << std::endl;
 	}
 	return 0;
-}
+}}
 
 			// }
 			// int maxIndex;

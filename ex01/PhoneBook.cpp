@@ -92,10 +92,11 @@ Contact PhoneBook::searchContact(int displayIndex) const
 		return contacts[(curIndex + displayIndex) % 8];
 }
 
-int PhoneBook::getTotalNbr() const
+int PhoneBook::gettotal() const
 {
 	return total;
 }
+
 /**
 CLASS: blueprint for creating object
 	- include what functions and varibles needed to create Obejct
