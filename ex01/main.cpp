@@ -50,22 +50,45 @@ int main()
 			singleContact.setSecret(readInput("Darkest secret is: "));
 			phonebook.addContact(singleContact);			
 		}
-		else if (cmd == "SEARCH")
+		else if (cmd == "SEARCH") //is try-catch() needed to catch exception such as non-numeric input??
 		{
-			
-			
+			int total;
+			phonebook.printContacts();
+			total = phonebook.getTotalNbr();
+			if (total == 0)
+			{
+				std::cout << "Empty Phonebook!" << std::endl;
+				continue ;//should break or waiting for new cmd such as ADD?
+			std::string inputIndex;
+			std::cout << "Enter the index you want to search: " << std::endl;
+			std::cin >> inputIndex;
+			int searchIndex = std::stoi(inputIndex);
+			if (searchIndex < 0 || searchIndex >= total)
+				std::cout << "Invalid index!" <<std::endl;
+			else
+			{
+				Contact person = phonebook.searchContact(searchIndex);
+				std::cout << "First Name: " << person.getFirst() << std::endl;
+				std::cout << "Last Name: " << person.getLast() << std::endl;
+				std::cout << "Nick Name: " << person.getNick() << std::endl;
+				std::cout << "Phone Number: " << person.getNumber() << std::endl;
+				std::cout << "Darkest Secret: " << person.getSecret() << std::endl;
+			}
 		}
 		else if (cmd == "EXIT")
-		{
-			
-		}
+			exit(0);
 		else
-		{
 			std::cout << "Invalid command!" << std::endl;
-		}
 	}
+	return 0;
 }
 
+			// }
+			// int maxIndex;
+			// if (total < 8)
+			// 	maxIndex = total - 1;
+			// else
+			// 	maxIndex = 7;
 
 /**
  * create Phonebook object;
