@@ -6,13 +6,17 @@
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:03:20 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/04 14:46:53 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/06 10:49:34 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
+#include "Contact.hpp"
+#include <iostream>
+#include <iomanip>
+#include <string>
 
-/*define constructor for PhoneBook class*/
+/*PhoneBook::PhoneBook() -> define constructor for PhoneBook class*/
 /* init curIndex and total, when this PhoneBook object is created
 	it statrs with: curIndex = 0 → the first available position in the contacts array
 	contactCount = 0 → The phonebook is empty */
@@ -39,18 +43,19 @@ void PhoneBook::addContact(const Contact &person)
 //print table of 4 columns of contacts
 void PhoneBook::printContacts() const
 {
-	int i;
-	int realIndex;
-	
-	if (total == 0)
-	{
-		std::cout << "PhoneBook is empty." << std::endl;
-		return ;
-	}
+	//empty is checked in main.cpp()
+	// if (total == 0)
+	// {
+	// 	std::cout << "PhoneBook is empty." << std::endl;
+	// 	return ;
+	// }
 	//every column is 10 chars wide
+	
 	std::cout << "     Index|First Name| Last Name|  Nickname" << std::endl;
+	int i;
 	for (i = 0; i < total; ++i)//++i more general used in cpp
 	{
+		int realIndex;
 		if (total < 8)
 			realIndex = i;
 		else

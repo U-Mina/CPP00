@@ -6,7 +6,7 @@
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:21:44 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/04 12:41:23 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/06 11:30:44 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,23 @@
 //define an empty ({} is empty) constructor for Contact class
 Contact::Contact(){}
 
-//Contact:: indicate the following ft belongs to this class
+//idea: Contact:: indicate the following ft belongs to this class
 void Contact::setFirst(const std::string &firstname){ firstName = firstname; }
 void Contact::setLast(const std::string &lastname){ lastName = lastname; }
 void Contact::setNick(const std::string &nickname){ nickName = nickname; }
-void Contact::setNumber(const std::string &num){ phoneNum = num; }
+void Contact::setNumber(const std::string &num)
+{
+	for (int i = 0; i < num.length(); ++i)
+	{
+		if (std::isdigit(num[i]) == false)
+		{
+			// std::cout << "Invalid Phone Number!" << std::endl;
+			// break;
+			throw std::invalid_argument("Invalid Phone Number!");
+		}
+	}
+	phoneNum = num;
+}
 void Contact::setSecret(const std::string &secrt){ darkSecret = secrt; }
 
 const std::string &Contact::getFirst() const { return firstName; }

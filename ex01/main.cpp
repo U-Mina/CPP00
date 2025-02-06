@@ -6,7 +6,7 @@
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:21:41 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/04 15:15:16 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/06 11:33:17 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,8 +22,9 @@ std::string readInput(const std::string &promtp)
 	{
 		std::cout << promtp << std::endl;
 		std::getline(std::cin, input);
-		if (input != "null")
-		// if (input.empty() == false)
+		if (std::cin.eof() == true)//ctrl+d case
+			exit(0);
+		if (input.empty() == false)
 			break ;
 		std::cout << "Invalid input! Try again." << std::endl;
 	}
@@ -39,6 +40,8 @@ int main()
 	{
 		std::cout << "Enter your instruction: ADD, SEARCH, EXIT" << std::endl;
 		std::getline(std::cin, cmd);
+		if (std::cin.eof() == true)//ctrl+d case
+			break;
 		//std::cin >> cmd;
 		if (cmd == "ADD")
 		{
@@ -46,42 +49,61 @@ int main()
 			singleContact.setFirst(readInput("Enter first name: "));
 			singleContact.setLast(readInput("Enter last name: "));
 			singleContact.setNick(readInput("Nickname is: "));
-			singleContact.setNumber(readInput("Phone number is: "));
+			try
+			{
+				singleContact.setNumber(readInput("Phone number is: "));
+			}
+			catch(const std::invalid_argument& e)//in getNum, invalid_arg error has been thrown!
+			{
+				std::cout << "Error: " << e.what() << "Try again!" << '\n';
+				continue ;
+			}
 			singleContact.setSecret(readInput("Darkest secret is: "));
 			phonebook.addContact(singleContact);			
 		}
-		else if (cmd == "SEARCH") //is try-catch() needed to catch exception such as non-numeric input??
+//try-catch() is necessary, otherwise: terminating with uncaught exception of type std::invalid_argument: stoi: no conversion
+		else if (cmd == "SEARCH") 
 		{
-			int total;
 			phonebook.printContacts();
+			int total;
 			total = phonebook.gettotal();
 			if (total == 0)
 			{
 				std::cout << "Empty Phonebook!" << std::endl;
 				continue ;//should break or waiting for new cmd such as ADD?
+			}
 			std::string inputIndex;
 			std::cout << "Enter the index you want to search: " << std::endl;
 			std::cin >> inputIndex;
-			int searchIndex = std::stoi(inputIndex);
-			if (searchIndex < 0 || searchIndex >= total)
-				std::cout << "Invalid index!" <<std::endl;
-			else
+			if (std::cin.eof() ||std::cin.fail())//ctrl+d case
+				break;
+			try
 			{
-				Contact person = phonebook.searchContact(searchIndex);
-				std::cout << "First Name: " << person.getFirst() << std::endl;
-				std::cout << "Last Name: " << person.getLast() << std::endl;
-				std::cout << "Nick Name: " << person.getNick() << std::endl;
-				std::cout << "Phone Number: " << person.getNumber() << std::endl;
-				std::cout << "Darkest Secret: " << person.getSecret() << std::endl;
+				int searchIndex = std::stoi(inputIndex);
+				if (searchIndex < 0 || searchIndex >= total)
+					std::cout << "Invalid index!" <<std::endl;
+				else
+				{
+					Contact person = phonebook.searchContact(searchIndex);
+					std::cout << "First Name: " << person.getFirst() << std::endl;
+					std::cout << "Last Name: " << person.getLast() << std::endl;
+					std::cout << "Nick Name: " << person.getNick() << std::endl;
+					std::cout << "Phone Number: " << person.getNumber() << std::endl;
+					std::cout << "Darkest Secret: " << person.getSecret() << std::endl;
+				}
+			}
+			catch(...)//to catch all exception
+			{
+				std::cout << "Invalid Index!" << "\n";
 			}
 		}
 		else if (cmd == "EXIT")
-			//exit(0);
+			break ;
 		else
 			std::cout << "Invalid command!" << std::endl;
 	}
 	return 0;
-}}
+}
 
 			// }
 			// int maxIndex;

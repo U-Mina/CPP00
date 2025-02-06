@@ -6,13 +6,16 @@
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:09:44 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/04 12:28:46 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/06 10:44:09 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
+# include <iostream>
+# include <iomanip>
+# include <string>
 # include "Contact.hpp"
 
 class PhoneBook
@@ -31,6 +34,7 @@ public:
 	/* print table (4 columns) of all contacts*/
 	void printContacts() const;
 	/* search a specifit contact object with index and display*/
+	/*ret type is Contact (a class is usr-defind data type!)*/
 	Contact searchContact(int displayIndex) const;
 	int gettotal() const;
 };

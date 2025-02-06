@@ -6,7 +6,7 @@
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:54:23 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/04 12:33:26 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/06 10:38:49 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,9 +21,9 @@
 anything that will always be used inside a class is private
 first name, last name, nickname, number, drakest screct
 */
+/*privete: variables should not be acceesed*/
 class Contact
 {
-/*variables should not be acceesed*/
 private:
 	std::string darkSecret;
 	std::string firstName;
@@ -32,7 +32,9 @@ private:
 	std::string phoneNum;	
 /*define method(function) inside Contact class*/
 public:
-	Contact(); /*constructor, will be called auto when obj created*/
+	/*constructor, will be called auto when obj created*/
+	Contact();
+	
 	/*setter for the var in Contact class*/
 	/*const: ft will not modify passed para; &: pass as reference, not copy*/
 	/*reference is passed to avoid unnecessary copy of data*/
@@ -42,6 +44,7 @@ public:
 	void setNumber(const std::string &num);
 	void setSecret(const std::string &secrt);
 	
+	/*getters to get info*/
 	/*ret type is const refrence(&) to std::string, not a copy*/
 	/*2nd const: this ft doesnt modify any attributes(var) of OBJECT*/
 	/*namely, getFirst() is read-only, on contrast setFirst() modify vars*/
