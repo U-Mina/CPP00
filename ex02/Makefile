@@ -1,4 +1,4 @@
-NAME	= bankjob
+NAME	= dreamjob
 C++		= c++
 CFLAG	= -Wall -Wextra -Werror -std=c++98
 SRC		= Account.cpp tests.cpp
@@ -7,7 +7,7 @@ OBJ		= $(SRC:.cpp=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAG) -o $(NAME) $(OBJ)
+	$(C++) $(CFLAG) -o $(NAME) $(OBJ)
 
 clean:
 	rm -f $(OBJ)
