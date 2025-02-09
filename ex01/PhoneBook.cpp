@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.cpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.cpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:03:20 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/06 10:49:34 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/09 11:28:38 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 #include "Contact.hpp"
 #include <iostream>
 #include <iomanip>
-#include <string>
 
 /*PhoneBook::PhoneBook() -> define constructor for PhoneBook class*/
 /* init curIndex and total, when this PhoneBook object is created

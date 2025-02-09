@@ -6,15 +6,13 @@
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 13:54:23 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/06 10:38:49 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/09 11:27:34 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CONTACT_HPP
 #define CONTACT_HPP
 
-# include <iostream>
-# include <iomanip>
 # include <string>
 
 /**

@@ -1,22 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   phonebook.hpp                                      :+:      :+:    :+:   */
+/*   PhoneBook.hpp                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:09:44 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/06 10:44:09 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/09 11:29:03 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PHONEBOOK_HPP
 #define PHONEBOOK_HPP
 
-# include <iostream>
-# include <iomanip>
-# include <string>
 # include "Contact.hpp"
+# include <string>
 
 class PhoneBook
 {
