@@ -6,7 +6,7 @@
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:51:07 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/09 14:55:30 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/09 15:03:30 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,5 @@ void Account::displayAccountsInfos()
 	_displayTimestamp();
 	std::cout << "accounts:" << _nbAccounts << ";total:"
 				<< _totalAmount << ";deposits:" << _totalNbDeposits
-				<< ";withdrawals:" << _totalNbWithdrawals;
+				<< ";withdrawals:" << _totalNbWithdrawals << std::endl;
 }
