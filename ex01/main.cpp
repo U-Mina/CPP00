@@ -6,12 +6,13 @@
 /*   By: ewu <ewu@student.42heilbronn.de>           +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/03 14:21:41 by ewu               #+#    #+#             */
-/*   Updated: 2025/02/06 12:17:17 by ewu              ###   ########.fr       */
+/*   Updated: 2025/02/11 11:00:22 by ewu              ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PhoneBook.hpp"
 #include "Contact.hpp"
+#include <iostream>
 
 /*normaly, const & passing the ref to avoid uncessary copy to enhance efficiency,
 for non primitive data type, its good habit*/
@@ -65,8 +66,7 @@ int main()
 		else if (cmd == "SEARCH") 
 		{
 			phonebook.printContacts();
-			int total;
-			total = phonebook.gettotal();
+			int total = phonebook.gettotal();
 			if (total == 0)
 			{
 				std::cout << "Empty Phonebook!" << std::endl;
@@ -75,13 +75,21 @@ int main()
 			std::string inputIndex;
 			std::cout << "Enter the index you want to search: " << std::endl;
 			std::cin >> inputIndex;
-			if (std::cin.eof() ||std::cin.fail())//ctrl+d case
+			if (std::cin.fail())
+			{
+				std::cin.clear();
+				std::cin.ignore(std::numeric_limits<std::streamsize>::max(), '\n');//discard invalid input
+				std::cout << "Invalid input! Please try again." << std::endl;
+				continue ;
+			}
+			std::cin.ignore();//clean input buffer
+			if (std::cin.eof())//ctrl+d case
 				break;
 			try
 			{
 				int searchIndex = std::stoi(inputIndex);
 				if (searchIndex < 0 || searchIndex >= total)
-					std::cout << "Invalid index!" <<std::endl;
+					std::cout << "Invalid index!" << std::endl;
 				else
 				{
 					Contact person = phonebook.searchContact(searchIndex);
